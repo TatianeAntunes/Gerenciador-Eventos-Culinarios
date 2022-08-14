@@ -1,0 +1,56 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: eventos_culinario
+-- ------------------------------------------------------
+-- Server version	5.6.15-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ingred_item`
+--
+
+DROP TABLE IF EXISTS `ingred_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ingred_item` (
+  `cod_item` int(11) NOT NULL,
+  `cod_ing` int(11) NOT NULL DEFAULT '0',
+  `qtd_ing` decimal(9,3) DEFAULT NULL,
+  PRIMARY KEY (`cod_item`,`cod_ing`),
+  KEY `cod_item` (`cod_item`),
+  KEY `cod_ing` (`cod_ing`),
+  CONSTRAINT `ingred_item_ibfk_1` FOREIGN KEY (`cod_item`) REFERENCES `item` (`cod_i`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ingred_item_ibfk_2` FOREIGN KEY (`cod_ing`) REFERENCES `ingrediente` (`cod_ing`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ingred_item`
+--
+
+LOCK TABLES `ingred_item` WRITE;
+/*!40000 ALTER TABLE `ingred_item` DISABLE KEYS */;
+INSERT INTO `ingred_item` VALUES (10,6,0.500),(10,8,0.600),(10,16,10.000),(10,17,10.000),(10,24,10.000),(10,26,10.000),(13,6,0.500),(13,8,0.600),(13,16,1.000),(13,17,2.000),(13,24,1.500),(13,26,10.000),(16,6,0.500),(16,8,0.600),(16,16,1.000),(16,17,2.000),(16,24,3.000),(16,26,10.000),(18,27,3.000),(18,28,0.100),(19,6,0.500),(19,8,0.600),(19,16,10.000),(19,17,10.000),(19,24,10.000),(19,26,10.000),(21,4,10.000),(21,5,1.000),(21,26,2.000),(21,86,1.000),(27,9,10.000),(27,17,10.000),(27,26,10.000),(30,8,2.000),(30,77,1.000),(31,45,1.000),(31,77,1.000),(43,2,1.000),(43,28,1.000),(43,55,2.000),(54,26,10.000),(54,30,1.000),(54,45,10.000),(54,49,2.000),(54,83,1.000),(54,84,2.000),(59,4,1.000),(59,26,2.000),(59,44,1.000),(59,108,7.000);
+/*!40000 ALTER TABLE `ingred_item` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-06-16  0:29:03
